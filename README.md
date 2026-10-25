@@ -35,7 +35,8 @@ The page uses `data/runners.local.json` when that file is present, and otherwise
 ## Using the page
 
 - Filter by All, R16, R8, or R4, and search by runner name. The two work together.
-- Each runner card shows the leg and the leg time.
+- Each runner card shows the leg and the leg time. Athmam's card also has a Captain chip.
+- Hendi's leg is 1:47:32 and Arief H's is 1:54:20. CP11 was not recorded, so those two times share the official gap from Luluk's finish to Arief H's finish, split by leg distance.
 - Open a reflection to read it full screen. The text scrolls, and Close returns to the cards.
 - On a phone, scroll down and an arrow at the bottom right returns to the top.
 - Krishna's message sits above the roster. Team Support is its own group, linked from the hero.

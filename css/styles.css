@@ -318,6 +318,7 @@ html[data-theme="light"] .icon-moon {
 .dialog-heading {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 0.5rem;
 }
 
@@ -326,6 +327,10 @@ html[data-theme="light"] .icon-moon {
 .dialog-heading h2 {
   margin: 0;
   font-size: 1.25rem;
+}
+
+.dialog-title .badge + .badge {
+  margin-left: 0.4rem;
 }
 
 .badge {

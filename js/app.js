@@ -341,6 +341,7 @@ function createCard(runner) {
   badge.textContent = runner.category;
 
   heading.append(name, badge);
+  appendRoleChips(badge, runner);
   body.append(heading);
   if (runner.leg) {
     const leg = document.createElement("p");
@@ -401,6 +402,7 @@ function fillDialog(runner) {
   dialogPhoto.replaceChildren(createPhoto(runner));
   dialogName.textContent = runner.name;
   dialogBadge.textContent = runner.category;
+  appendRoleChips(dialogBadge, runner);
   setOptionalText(dialogTime, timeLabel(recordedTime(runner.finishTime)));
   setOptionalText(dialogLeg, runner.leg || "");
   dialogReflection.replaceChildren();
@@ -435,6 +437,21 @@ function extraReflections(runner) {
   return runner.additionalReflections.filter(
     (item) => item && typeof item.by === "string" && typeof item.text === "string" && item.text.trim(),
   );
+}
+
+function appendRoleChips(after, runner) {
+  const parent = after.parentElement;
+  parent.querySelectorAll(".badge-role").forEach((chip) => chip.remove());
+  const labels = Array.isArray(runner.chips) ? runner.chips : [];
+  let anchor = after;
+  for (const label of labels) {
+    if (typeof label !== "string" || !label.trim()) continue;
+    const chip = document.createElement("span");
+    chip.className = "badge badge-role";
+    chip.textContent = label.trim();
+    anchor.after(chip);
+    anchor = chip;
+  }
 }
 
 function recordedTime(value) {
