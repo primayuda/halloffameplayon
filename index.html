@@ -53,22 +53,34 @@
           alt="ITB Ultra Marathon 2026"
         />
       </div>
-      <a
-        class="photo-link"
-        href="https://photos.app.goo.gl/wH6TLBaq8RdcZBXQA"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path
-            fill="currentColor"
-            d="M9 3h6l1.2 2H19a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h2.8L9 3zm3 5.2A4.3 4.3 0 1 0 16.3 12 4.3 4.3 0 0 0 12 8.2zm0 1.8a2.5 2.5 0 1 1-2.5 2.5A2.5 2.5 0 0 1 12 10z"
-          />
-        </svg>
-        Photo collection
-      </a>
+      <div class="hero-links">
+        <a
+          class="photo-link"
+          href="https://photos.app.goo.gl/wH6TLBaq8RdcZBXQA"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              fill="currentColor"
+              d="M9 3h6l1.2 2H19a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h2.8L9 3zm3 5.2A4.3 4.3 0 1 0 16.3 12 4.3 4.3 0 0 0 12 8.2zm0 1.8a2.5 2.5 0 1 1-2.5 2.5A2.5 2.5 0 0 1 12 10z"
+            />
+          </svg>
+          Photo collection
+        </a>
+        <a class="photo-link" href="#support">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              fill="currentColor"
+              d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4zm-7 8a7 7 0 0 1 14 0v1H5z"
+            />
+          </svg>
+          Team Support
+        </a>
+      </div>
     </header>
     <main>
+      <section id="ketua" class="ketua" aria-label="Pesan Ketua Ikatan Alumni ITB 85"></section>
       <div class="toolbar">
         <label class="search">
           <span class="visually-hidden">Search runner name</span>
@@ -89,6 +101,10 @@
         </nav>
       </div>
       <section id="roster" class="roster" aria-live="polite" aria-label="Runners"></section>
+      <section id="support" class="support" aria-label="Team Support">
+        <h2 class="group-title">Team Support</h2>
+        <div id="support-roster" class="roster"></div>
+      </section>
     </main>
     <dialog id="reflection-dialog" aria-labelledby="dialog-name">
       <div class="dialog-sheet">
@@ -103,7 +119,7 @@
           <button type="button" class="dialog-close" id="dialog-close">Close</button>
         </div>
         <div class="reflection-scroll">
-          <p id="dialog-reflection" class="reflection"></p>
+          <div id="dialog-reflection"></div>
         </div>
       </div>
     </dialog>

@@ -121,11 +121,18 @@ html[data-theme="dark"] .icon-sun {
   width: auto;
 }
 
+.hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.65rem;
+  margin-top: 1.15rem;
+}
+
 .photo-link {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  margin-top: 1.15rem;
   border-radius: 999px;
   padding: 0.55rem 1rem;
   background: var(--card);
@@ -163,6 +170,25 @@ html[data-theme="dark"] .icon-sun {
 
 .hero-meta {
   margin-top: 0.75rem;
+}
+
+.ketua {
+  scroll-margin-top: 1rem;
+  margin-top: 1.25rem;
+}
+
+.ketua-card {
+  max-width: 42rem;
+  margin-inline: auto;
+}
+
+.support {
+  scroll-margin-top: 1rem;
+}
+
+.group-title {
+  margin: 0.5rem 0 0.85rem;
+  font-size: clamp(1.6rem, 4vw, 2rem);
 }
 
 .toolbar {
@@ -291,6 +317,7 @@ html[data-theme="dark"] .icon-sun {
 }
 
 .runner-heading h2,
+.runner-heading h3,
 .dialog-heading h2 {
   margin: 0;
   font-size: 1.25rem;
@@ -315,12 +342,56 @@ html[data-theme="dark"] .icon-sun {
   white-space: pre-wrap;
 }
 
+.leg {
+  margin: 0.2rem 0 0;
+  color: var(--accent-purple);
+  font-size: 0.92rem;
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+.finish-time {
+  margin: 0.15rem 0 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
 .reflection {
   line-height: 1.55;
 }
 
 .reflection-preview {
   cursor: pointer;
+}
+
+.reflection-extra {
+  color: var(--accent-purple);
+}
+
+.reflection-more {
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid color-mix(in srgb, var(--text) 18%, transparent);
+}
+
+.reflection-more h3,
+.reflection-more .byline {
+  margin: 0;
+}
+
+.reflection-more h3 {
+  font-size: 1.2rem;
+}
+
+.reflection-more .byline {
+  margin-top: 0.2rem;
+  color: var(--accent-purple);
+  font-style: italic;
+}
+
+.reflection-more .reflection {
+  margin-top: 1rem;
 }
 
 #reflection-dialog {
@@ -379,9 +450,13 @@ html[data-theme="dark"] .icon-sun {
   padding: 0.25rem 0.15rem 1rem;
 }
 
-.reflection-scroll .reflection {
+#dialog-reflection {
   max-width: 42rem;
   margin: 0 auto;
+}
+
+.reflection-scroll .reflection {
+  margin: 0;
   font-size: clamp(1.05rem, 2.4vw, 1.25rem);
 }
 
