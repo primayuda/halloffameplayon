@@ -1,0 +1,136 @@
+:root {
+  --text-dark: #0f172a;
+  --accent-cyan: #06b6d4;
+  --accent-purple: #9333ea;
+  --card: #ffffff;
+  color: var(--text-dark);
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: linear-gradient(180deg, #ffffff 0%, #7dd3fc 48%, #1e40af 100%);
+  min-height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.hero,
+main {
+  width: min(960px, calc(100% - 2rem));
+  margin-inline: auto;
+}
+
+.hero {
+  padding: 2.5rem 0 1rem;
+  text-align: center;
+}
+
+.hero h1,
+.hero-kicker,
+.motto,
+.hero-meta {
+  margin: 0;
+}
+
+.hero h1 {
+  font-size: clamp(2.4rem, 8vw, 4rem);
+  letter-spacing: -0.03em;
+}
+
+.motto {
+  margin-top: 0.5rem;
+  color: var(--accent-purple);
+  font-family: "Palatino Linotype", Palatino, Georgia, serif;
+  font-style: italic;
+  font-size: 1.35rem;
+}
+
+.hero-meta {
+  margin-top: 0.75rem;
+}
+
+.filters {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.75rem 0;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(8px);
+}
+
+.filters button,
+.runner-card button {
+  border: 0;
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem;
+  background: #e0f2fe;
+  color: var(--text-dark);
+  font: inherit;
+}
+
+.filters button.is-active {
+  background: var(--accent-purple);
+  color: white;
+}
+
+.roster {
+  display: grid;
+  gap: 1rem;
+  padding-bottom: 3rem;
+}
+
+.runner-card {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--card);
+  border-radius: 1.25rem;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+.runner-photo {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #e2e8f0;
+  flex: none;
+}
+
+.runner-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.runner-heading h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.badge {
+  border-radius: 999px;
+  padding: 0.15rem 0.55rem;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+}
+
+.reflection-preview,
+.reflection,
+.finish-time,
+.leg {
+  white-space: pre-wrap;
+}
+
+@media (min-width: 720px) {
+  .roster {
+    grid-template-columns: 1fr 1fr;
+  }
+}

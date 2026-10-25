@@ -1,0 +1,31 @@
+---
+import { existsSync, readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import Hero from '../components/Hero';
+import Roster from '../components/Roster';
+import type { Runner } from '../types';
+import '../styles/global.css';
+
+const localData = join(process.cwd(), 'src/data/runners.local.json');
+const publishedData = join(process.cwd(), 'src/data/runners.json');
+const dataPath = existsSync(localData) ? localData : publishedData;
+const roster = JSON.parse(readFileSync(dataPath, 'utf8')) as Runner[];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PlayOn 85 Hall of Fame</title>
+    <meta
+      name="description"
+      content="Post-race Hall of Fame for PlayOn 85 at ITB Ultra Marathon 2026, Jakarta–Bandung."
+    />
+  </head>
+  <body>
+    <Hero />
+    <main>
+      <Roster client:load runners={roster} />
+    </main>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.astro/
+.DS_Store
+.env
+.env.*
+*.local
+
+# Stay on this machine. Do not publish Cursor session notes,
+# real runner records, or photos of people.
+Playon85-HallOfFame-Cursor-Instructions.md
+src/data/runners.local.json
+references/
+src/assets/photos/*
+!src/assets/photos/.gitkeep
+src/assets/logos/*
+!src/assets/logos/.gitkeep
