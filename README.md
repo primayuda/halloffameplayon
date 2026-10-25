@@ -40,7 +40,7 @@ The page uses `data/runners.local.json` when that file is present, and otherwise
 - On a phone, scroll down and an arrow at the bottom right returns to the top.
 - Krishna's message sits above the roster. Team Support is its own group, linked from the hero.
 - The moon and sun button switches light and dark. The page opens in dark mode. A choice is saved in this browser.
-- The browser tab uses the PlayOn 85 icon. Sharing the page link shows that same logo.
+- The browser tab shows a bold 85. Sharing the page link shows the full PlayOn 85 logo.
 - Photo collection opens the team album: https://photos.app.goo.gl/wH6TLBaq8RdcZBXQA
 
 ## Preview
