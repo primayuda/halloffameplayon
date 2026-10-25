@@ -32,8 +32,9 @@ The page uses `data/runners.local.json` when that file is present, and otherwise
 ## Using the page
 
 - Filter by All, R16, R8, or R4, and search by runner name. The two work together.
-- Each runner card shows the leg and the official leg time.
+- Each runner card shows the leg and the leg time.
 - Open a reflection to read it full screen. The text scrolls, and Close returns to the cards.
+- On a phone, scroll down and an arrow at the bottom right returns to the top.
 - Krishna's message sits above the roster. Team Support is its own group, linked from the hero.
 - The moon and sun button switches light and dark. The choice is saved in this browser. A first visit follows the device setting.
 - Photo collection opens the team album: https://photos.app.goo.gl/wH6TLBaq8RdcZBXQA

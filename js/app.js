@@ -50,6 +50,22 @@ dialog.addEventListener("click", (event) => {
   if (event.target === dialog) dialog.close();
 });
 
+const toTop = document.querySelector("#to-top");
+const mobileQuery = window.matchMedia("(max-width: 719px)");
+
+function syncToTop() {
+  toTop.hidden = !(mobileQuery.matches && window.scrollY > 480);
+}
+
+toTop.addEventListener("click", () => {
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+});
+
+window.addEventListener("scroll", syncToTop, { passive: true });
+mobileQuery.addEventListener("change", syncToTop);
+syncToTop();
+
 for (const button of filterButtons) {
   button.addEventListener("click", () => {
     activeFilter = button.dataset.filter;

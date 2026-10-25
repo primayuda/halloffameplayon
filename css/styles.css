@@ -460,7 +460,42 @@ html[data-theme="dark"] .icon-sun {
   font-size: clamp(1.05rem, 2.4vw, 1.25rem);
 }
 
+.to-top {
+  position: fixed;
+  right: 1rem;
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--accent-purple);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+}
+
+.to-top[hidden] {
+  display: none !important;
+}
+
+.to-top:focus-visible {
+  outline: 2px solid var(--accent-purple);
+  outline-offset: 2px;
+}
+
+.to-top svg {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+
 @media (min-width: 720px) {
+  .to-top {
+    display: none !important;
+  }
+
   .logo-elephant,
   .logo-itb {
     height: 148px;
