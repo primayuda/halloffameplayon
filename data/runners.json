@@ -1,0 +1,254 @@
+[
+  {
+    "id": "tuti",
+    "name": "Tuti",
+    "category": "R16",
+    "photo": "/photos/tuti.jpg",
+    "finishTime": "--:--:--",
+    "reflection": "",
+    "leg": ""
+  },
+  {
+    "id": "inna",
+    "name": "Inna",
+    "category": "R16",
+    "photo": "/photos/inna.jpg",
+    "finishTime": "--:--:--",
+    "reflection": "",
+    "leg": ""
+  },
+  {
+    "id": "edward",
+    "name": "Edward",
+    "category": "R16",
+    "photo": "/photos/edward.jpg",
+    "finishTime": "--:--:--",
+    "reflection": "",
+    "leg": ""
+  },
+  {
+    "id": "yus",
+    "name": "Yus",
+    "category": "R16",
+    "photo": "/photos/yus.jpg",
+    "finishTime": "--:--:--",
+    "reflection": "",
+    "leg": ""
+  },
+  {
+    "id": "sjukron",
+    "name": "Sjukron",
+    "category": "R16",
+    "photo": "/photos/sjukron.jpg",
+    "finishTime": "--:--:--",
+    "reflection": "",
+    "leg": ""
+  },
+  {
+    "id": "arief-tp",
+    "name": "Arief TP",
+    "category": "R16",
+    "photo": "/photos/arief-tp.jpg",
+    "finishTime": "--:--:--",
+    "reflection": "",
+    "leg": ""
+  },
+  {
+    "id": "sutardi",
+    "name": "Sutardi",
+    "category": "R16",
+    "photo": "/photos/sutardi.jpg",
+    "finishTime": "--:--:--",
+    "reflection": "",
+    "leg": ""
+  },
+  {
+    "id": "dudy-eff",
+    "name": "Dudy Eff",
+    "category": "R16",
+    "photo": "/photos/dudy-eff.jpg",
+    "finishTime": "--:--:--",
+    "reflection": "",
+    "leg": ""
+  },
+  {
+    "id": "rinot",
+    "name": "Rinot",
+    "category": "R16",
+    "photo": "/photos/rinot.jpg",
+    "finishTime": "--:--:--",
+    "reflection": "",
+    "leg": ""
+  },
+  {
+    "id": "luluk",
+    "name": "Luluk",
+    "category": "R16",
+    "photo": "/photos/luluk.jpg",
+    "finishTime": "--:--:--",
+    "reflection": "",
+    "leg": ""
+  },
+  {
+    "id": "hendi",
+    "name": "Hendi",
+    "category": "R16",
+    "photo": "/photos/hendi.jpg",
+    "finishTime": "--:--:--",
+    "reflection": "",
+    "leg": ""
+  },
+  {
+    "id": "arief-h",
+    "name": "Arief H",
+    "category": "R16",
+    "photo": "/photos/arief-h.jpg",
+    "finishTime": "--:--:--",
+    "reflection": "",
+    "leg": ""
+  },
+  {
+    "id": "andi",
+    "name": "Andi",
+    "category": "R16",
+    "photo": "/photos/andi.jpg",
+    "finishTime": "--:--:--",
+    "reflection": "",
+    "leg": ""
+  },
+  {
+    "id": "mutadi",
+    "name": "Mutadi",
+    "category": "R16",
+    "photo": "/photos/mutadi.jpg",
+    "finishTime": "--:--:--",
+    "reflection": "",
+    "leg": ""
+  },
+  {
+    "id": "triyani",
+    "name": "Triyani",
+    "category": "R16",
+    "photo": "/photos/triyani.jpg",
+    "finishTime": "--:--:--",
+    "reflection": "",
+    "leg": ""
+  },
+  {
+    "id": "minsani",
+    "name": "Minsani",
+    "category": "R16",
+    "photo": "/photos/minsani.jpg",
+    "finishTime": "--:--:--",
+    "reflection": "",
+    "leg": "Leg 16"
+  },
+  {
+    "id": "ella",
+    "name": "Ella",
+    "category": "R8",
+    "photo": "/photos/ella.jpg",
+    "finishTime": "--:--:--",
+    "reflection": "",
+    "leg": ""
+  },
+  {
+    "id": "sergei",
+    "name": "Sergei",
+    "category": "R8",
+    "photo": "/photos/sergei.jpg",
+    "finishTime": "--:--:--",
+    "reflection": "",
+    "leg": ""
+  },
+  {
+    "id": "gatot",
+    "name": "Gatot",
+    "category": "R8",
+    "photo": "/photos/gatot.jpg",
+    "finishTime": "--:--:--",
+    "reflection": "",
+    "leg": ""
+  },
+  {
+    "id": "akmal",
+    "name": "Akmal",
+    "category": "R8",
+    "photo": "/photos/akmal.jpg",
+    "finishTime": "--:--:--",
+    "reflection": "",
+    "leg": ""
+  },
+  {
+    "id": "didiet",
+    "name": "Didiet",
+    "category": "R8",
+    "photo": "/photos/didiet.jpg",
+    "finishTime": "--:--:--",
+    "reflection": "",
+    "leg": ""
+  },
+  {
+    "id": "hadi",
+    "name": "Hadi",
+    "category": "R8",
+    "photo": "/photos/hadi.jpg",
+    "finishTime": "--:--:--",
+    "reflection": "",
+    "leg": ""
+  },
+  {
+    "id": "basyrah",
+    "name": "Basyrah",
+    "category": "R8",
+    "photo": "/photos/basyrah.jpg",
+    "finishTime": "--:--:--",
+    "reflection": "",
+    "leg": ""
+  },
+  {
+    "id": "athmam",
+    "name": "Athmam",
+    "category": "R8",
+    "photo": "/photos/athmam.jpg",
+    "finishTime": "--:--:--",
+    "reflection": "",
+    "leg": ""
+  },
+  {
+    "id": "halomoan",
+    "name": "Halomoan",
+    "category": "R4",
+    "photo": "/photos/halomoan.jpg",
+    "finishTime": "--:--:--",
+    "reflection": "",
+    "leg": ""
+  },
+  {
+    "id": "friatma",
+    "name": "Friatma",
+    "category": "R4",
+    "photo": "/photos/friatma.jpg",
+    "finishTime": "--:--:--",
+    "reflection": "",
+    "leg": ""
+  },
+  {
+    "id": "edo",
+    "name": "Edo",
+    "category": "R4",
+    "photo": "/photos/edo.jpg",
+    "finishTime": "--:--:--",
+    "reflection": "",
+    "leg": ""
+  },
+  {
+    "id": "wawan",
+    "name": "Wawan",
+    "category": "R4",
+    "photo": "/photos/wawan.jpg",
+    "finishTime": "--:--:--",
+    "reflection": "",
+    "leg": ""
+  }
+]

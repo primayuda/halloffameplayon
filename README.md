@@ -2,24 +2,28 @@
 
 Post-race Hall of Fame for the PlayOn 85 team at ITB Ultra Marathon 2026 (Jakarta–Bandung).
 
-Static site built with Astro and React, deployed to GitHub Pages.
+Plain HTML, CSS, and JavaScript site for GitHub Pages.
 
 ## Layout
 
 ```
-src/components/   Hero, Filters, RunnerCard, Roster
-src/data/         runners.json is the published roster (empty in git)
-src/assets/       photos/ and logos/ stay local until cleared for publish
+index.html
+css/styles.css
+js/app.js
+data/runners.json          published roster, without full reflections
+data/runners.local.json    full roster, this machine only
+assets/photos/             runner portraits from the category posters
+assets/logos/              official logos
 ```
 
-Real runner records, photos, and Cursor working notes are gitignored. Keep them in `src/data/runners.local.json` and the local asset folders. The site uses that local file when it is present, and otherwise uses the empty published roster.
+The page asks for `data/runners.local.json` first. On this computer that file is used, including reflections. The published roster has names, categories, and photos.
 
-## Scripts
+## Preview
 
 ```bash
-npm install
-npm run dev
-npm run build
+python3 -m http.server 8080
 ```
+
+Open `http://127.0.0.1:8080/`.
 
 The published site is `https://primayuda.github.io/halloffameplayon/`.

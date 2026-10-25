@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PlayOn 85 Hall of Fame</title>
+    <meta
+      name="description"
+      content="Post-race Hall of Fame for PlayOn 85 at ITB Ultra Marathon 2026, Jakarta–Bandung."
+    />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src 'self' https:; style-src 'self'; script-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <p class="hero-kicker">PlayOn 85</p>
+      <h1>Hall of Fame</h1>
+      <p class="motto">Run for our future generation</p>
+      <p class="hero-meta">ITB Ultra Marathon 2026 · Jakarta–Bandung</p>
+    </header>
+    <main>
+      <nav class="filters" aria-label="Category">
+        <button type="button" data-filter="All" aria-pressed="true">All</button>
+        <button type="button" data-filter="R16" aria-pressed="false">R16</button>
+        <button type="button" data-filter="R8" aria-pressed="false">R8</button>
+        <button type="button" data-filter="R4" aria-pressed="false">R4</button>
+      </nav>
+      <section id="roster" class="roster" aria-live="polite" aria-label="Runners"></section>
+    </main>
+    <dialog id="reflection-dialog" aria-labelledby="dialog-name">
+      <div class="dialog-sheet">
+        <button type="button" class="dialog-close" id="dialog-close">Close</button>
+        <div class="dialog-heading">
+          <div id="dialog-photo"></div>
+          <div>
+            <h2 id="dialog-name"></h2>
+            <p id="dialog-badge" class="badge"></p>
+          </div>
+        </div>
+        <p id="dialog-time" class="finish-time" hidden></p>
+        <p id="dialog-leg" class="leg" hidden></p>
+        <p id="dialog-reflection" class="reflection"></p>
+      </div>
+    </dialog>
+    <script src="js/app.js"></script>
+  </body>
+</html>
