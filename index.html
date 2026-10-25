@@ -12,37 +12,99 @@
       http-equiv="Content-Security-Policy"
       content="default-src 'self'; img-src 'self' https:; style-src 'self'; script-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'"
     />
+    <script src="js/theme.js"></script>
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
     <header class="hero">
-      <p class="hero-kicker">PlayOn 85</p>
+      <div class="theme-row">
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-pressed="false">
+          <span class="visually-hidden">Switch to dark mode</span>
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              fill="currentColor"
+              d="M21 14.5A8.5 8.5 0 0 1 9.5 3a7 7 0 1 0 11.5 11.5z"
+            />
+          </svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" fill="currentColor" />
+            <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <path d="M12 2.5v2.2M12 19.3v2.2M4.7 4.7l1.6 1.6M17.7 17.7l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.7 19.3l1.6-1.6M17.7 6.3l1.6-1.6" />
+            </g>
+          </svg>
+        </button>
+      </div>
+      <img
+        class="logo logo-playon"
+        src="assets/logos/playon85.png"
+        alt="PlayOn 85"
+      />
       <h1>Hall of Fame</h1>
       <p class="motto">Run for our future generation</p>
-      <p class="hero-meta">ITB Ultra Marathon 2026 · Jakarta–Bandung</p>
+      <div class="logo-row">
+        <img
+          class="logo logo-elephant"
+          src="assets/logos/elephant.png"
+          alt="ITB 85 Ultra Marathon, Jakarta to Bandung"
+        />
+        <img
+          class="logo logo-itb"
+          src="assets/logos/itb-ultra.png"
+          alt="ITB Ultra Marathon 2026"
+        />
+      </div>
+      <a
+        class="photo-link"
+        href="https://photos.app.goo.gl/wH6TLBaq8RdcZBXQA"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            fill="currentColor"
+            d="M9 3h6l1.2 2H19a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h2.8L9 3zm3 5.2A4.3 4.3 0 1 0 16.3 12 4.3 4.3 0 0 0 12 8.2zm0 1.8a2.5 2.5 0 1 1-2.5 2.5A2.5 2.5 0 0 1 12 10z"
+          />
+        </svg>
+        Photo collection
+      </a>
     </header>
     <main>
-      <nav class="filters" aria-label="Category">
-        <button type="button" data-filter="All" aria-pressed="true">All</button>
-        <button type="button" data-filter="R16" aria-pressed="false">R16</button>
-        <button type="button" data-filter="R8" aria-pressed="false">R8</button>
-        <button type="button" data-filter="R4" aria-pressed="false">R4</button>
-      </nav>
+      <div class="toolbar">
+        <label class="search">
+          <span class="visually-hidden">Search runner name</span>
+          <input
+            id="runner-search"
+            type="search"
+            placeholder="Search runner name"
+            autocomplete="off"
+            spellcheck="false"
+            enterkeyhint="search"
+          />
+        </label>
+        <nav class="filters" aria-label="Category">
+          <button type="button" data-filter="All" aria-pressed="true">All</button>
+          <button type="button" data-filter="R16" aria-pressed="false">R16</button>
+          <button type="button" data-filter="R8" aria-pressed="false">R8</button>
+          <button type="button" data-filter="R4" aria-pressed="false">R4</button>
+        </nav>
+      </div>
       <section id="roster" class="roster" aria-live="polite" aria-label="Runners"></section>
     </main>
     <dialog id="reflection-dialog" aria-labelledby="dialog-name">
       <div class="dialog-sheet">
-        <button type="button" class="dialog-close" id="dialog-close">Close</button>
         <div class="dialog-heading">
           <div id="dialog-photo"></div>
-          <div>
+          <div class="dialog-title">
             <h2 id="dialog-name"></h2>
             <p id="dialog-badge" class="badge"></p>
+            <p id="dialog-time" class="finish-time" hidden></p>
+            <p id="dialog-leg" class="leg" hidden></p>
           </div>
+          <button type="button" class="dialog-close" id="dialog-close">Close</button>
         </div>
-        <p id="dialog-time" class="finish-time" hidden></p>
-        <p id="dialog-leg" class="leg" hidden></p>
-        <p id="dialog-reflection" class="reflection"></p>
+        <div class="reflection-scroll">
+          <p id="dialog-reflection" class="reflection"></p>
+        </div>
       </div>
     </dialog>
     <script src="js/app.js"></script>

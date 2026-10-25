@@ -1,7 +1,9 @@
 const CATEGORIES = new Set(["R16", "R8", "R4"]);
-const mobileQuery = window.matchMedia("(max-width: 719px)");
 
+const themeButton = document.querySelector("#theme-toggle");
+const themeLabel = themeButton.querySelector(".visually-hidden");
 const rosterEl = document.querySelector("#roster");
+const searchInput = document.querySelector("#runner-search");
 const filterButtons = [...document.querySelectorAll("[data-filter]")];
 const dialog = document.querySelector("#reflection-dialog");
 const dialogPhoto = document.querySelector("#dialog-photo");
@@ -13,7 +15,31 @@ const dialogReflection = document.querySelector("#dialog-reflection");
 
 let runners = [];
 let activeFilter = "All";
-let openId = "";
+let nameQuery = "";
+
+syncThemeButton();
+themeButton.addEventListener("click", () => {
+  const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  document.documentElement.dataset.theme = next;
+  try {
+    localStorage.setItem("theme", next);
+  } catch {
+    /* Preference stays for this visit when storage is unavailable. */
+  }
+  syncThemeButton();
+});
+
+window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (event) => {
+  if (readStoredTheme()) return;
+  document.documentElement.dataset.theme = event.matches ? "dark" : "light";
+  syncThemeButton();
+});
+
+searchInput.addEventListener("input", () => {
+  nameQuery = searchInput.value;
+  if (dialog.open) dialog.close();
+  renderRoster();
+});
 
 document.querySelector("#dialog-close").addEventListener("click", () => {
   dialog.close();
@@ -23,14 +49,9 @@ dialog.addEventListener("click", (event) => {
   if (event.target === dialog) dialog.close();
 });
 
-dialog.addEventListener("close", () => {
-  openId = "";
-});
-
 for (const button of filterButtons) {
   button.addEventListener("click", () => {
     activeFilter = button.dataset.filter;
-    openId = "";
     if (dialog.open) dialog.close();
     for (const item of filterButtons) {
       item.setAttribute("aria-pressed", String(item === button));
@@ -43,6 +64,21 @@ loadRunners().then((loaded) => {
   runners = loaded;
   renderRoster();
 });
+
+function syncThemeButton() {
+  const dark = document.documentElement.dataset.theme === "dark";
+  themeButton.setAttribute("aria-pressed", String(dark));
+  themeLabel.textContent = dark ? "Switch to light mode" : "Switch to dark mode";
+}
+
+function readStoredTheme() {
+  try {
+    const value = localStorage.getItem("theme");
+    return value === "dark" || value === "light" ? value : "";
+  } catch {
+    return "";
+  }
+}
 
 async function loadRunners() {
   const urls = ["data/runners.local.json", "data/runners.json"];
@@ -70,23 +106,33 @@ function isRunner(value) {
 }
 
 function renderRoster() {
-  const visible = runners.filter(
-    (runner) => activeFilter === "All" || runner.category === activeFilter,
-  );
+  const query = nameQuery.trim().toLowerCase();
+  const visible = runners.filter((runner) => {
+    const categoryMatches = activeFilter === "All" || runner.category === activeFilter;
+    const nameMatches = runner.name.toLowerCase().includes(query);
+    return categoryMatches && nameMatches;
+  });
   rosterEl.replaceChildren();
 
   if (visible.length === 0) {
     const empty = document.createElement("p");
     empty.className = "empty";
-    empty.textContent =
-      runners.length === 0
-        ? "Runner records stay on this computer until they are ready to publish."
-        : `No ${activeFilter} runners in this view.`;
+    empty.textContent = emptyMessage(query);
     rosterEl.append(empty);
     return;
   }
 
   for (const runner of visible) rosterEl.append(createCard(runner));
+}
+
+function emptyMessage(query) {
+  if (runners.length === 0) {
+    return "Runner records stay on this computer until they are ready to publish.";
+  }
+  const typed = nameQuery.trim();
+  if (query && activeFilter !== "All") return `No ${activeFilter} runners match “${typed}”.`;
+  if (query) return `No runners match “${typed}”.`;
+  return `No ${activeFilter} runners in this view.`;
 }
 
 function createCard(runner) {
@@ -105,11 +151,7 @@ function createCard(runner) {
   badge.textContent = runner.category;
 
   heading.append(name, badge);
-  body.append(heading);
-
-  const expanded = openId === runner.id && !mobileQuery.matches;
-  if (expanded) body.append(expandedDetails(runner));
-  else body.append(collapsedDetails(runner));
+  body.append(heading, collapsedDetails(runner));
 
   card.append(createPhoto(runner), body);
   return card;
@@ -120,6 +162,7 @@ function collapsedDetails(runner) {
   const preview = document.createElement("p");
   preview.className = "reflection-preview";
   preview.textContent = reflectionPreview(runner.reflection);
+  preview.addEventListener("click", () => openReflection(runner));
 
   const button = document.createElement("button");
   button.type = "button";
@@ -130,34 +173,10 @@ function collapsedDetails(runner) {
   return fragment;
 }
 
-function expandedDetails(runner) {
-  const wrap = document.createElement("div");
-  appendMeta(wrap, runner);
-
-  const reflection = document.createElement("p");
-  reflection.className = "reflection";
-  reflection.textContent = reflectionText(runner.reflection);
-
-  const button = document.createElement("button");
-  button.type = "button";
-  button.textContent = "Close";
-  button.addEventListener("click", () => {
-    openId = "";
-    renderRoster();
-  });
-
-  wrap.append(reflection, button);
-  return wrap;
-}
-
 function openReflection(runner) {
-  if (mobileQuery.matches) {
-    fillDialog(runner);
-    if (!dialog.open) dialog.showModal();
-    return;
-  }
-  openId = runner.id;
-  renderRoster();
+  fillDialog(runner);
+  if (!dialog.open) dialog.showModal();
+  document.querySelector(".reflection-scroll").scrollTop = 0;
 }
 
 function fillDialog(runner) {
@@ -167,21 +186,6 @@ function fillDialog(runner) {
   setOptionalText(dialogTime, runner.finishTime ? `Finish time ${runner.finishTime}` : "");
   setOptionalText(dialogLeg, runner.leg || "");
   dialogReflection.textContent = reflectionText(runner.reflection);
-}
-
-function appendMeta(parent, runner) {
-  if (runner.finishTime) {
-    const time = document.createElement("p");
-    time.className = "finish-time";
-    time.textContent = `Finish time ${runner.finishTime}`;
-    parent.append(time);
-  }
-  if (runner.leg) {
-    const leg = document.createElement("p");
-    leg.className = "leg";
-    leg.textContent = runner.leg;
-    parent.append(leg);
-  }
 }
 
 function setOptionalText(element, text) {

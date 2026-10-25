@@ -9,7 +9,8 @@ Plain HTML, CSS, and JavaScript site for GitHub Pages.
 ```
 index.html
 css/styles.css
-js/app.js
+js/app.js                  roster, search, and theme switch
+js/theme.js                applies the saved or system theme before paint
 data/runners.json          published roster, including reflections
 data/runners.local.json    optional local copy, this machine only
 assets/photos/             runner portraits from the category posters
@@ -17,6 +18,13 @@ assets/logos/              official logos
 ```
 
 The page uses `data/runners.local.json` when that file is present, and otherwise `data/runners.json`. Both can contain reflections. The published roster is `data/runners.json`.
+
+## Using the page
+
+- Filter by All, R16, R8, or R4, and search by runner name. The two work together.
+- Open a reflection to read it full screen. The text scrolls, and Close returns to the cards.
+- The moon and sun button switches light and dark. The choice is saved in this browser. A first visit follows the device setting.
+- Photo collection opens the team album: https://photos.app.goo.gl/wH6TLBaq8RdcZBXQA
 
 ## Preview
 
