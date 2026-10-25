@@ -10,13 +10,13 @@ Plain HTML, CSS, and JavaScript site for GitHub Pages.
 index.html
 css/styles.css
 js/app.js
-data/runners.json          published roster, without full reflections
-data/runners.local.json    full roster, this machine only
+data/runners.json          published roster, including reflections
+data/runners.local.json    optional local copy, this machine only
 assets/photos/             runner portraits from the category posters
 assets/logos/              official logos
 ```
 
-The page asks for `data/runners.local.json` first. On this computer that file is used, including reflections. The published roster has names, categories, and photos.
+The page uses `data/runners.local.json` when that file is present, and otherwise `data/runners.json`. Both can contain reflections. The published roster is `data/runners.json`.
 
 ## Preview
 
