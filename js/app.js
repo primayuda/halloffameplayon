@@ -11,6 +11,7 @@ const dialogName = document.querySelector("#dialog-name");
 const dialogBadge = document.querySelector("#dialog-badge");
 const dialogTime = document.querySelector("#dialog-time");
 const dialogLeg = document.querySelector("#dialog-leg");
+const dialogStrava = document.querySelector("#dialog-strava");
 const dialogReflection = document.querySelector("#dialog-reflection");
 
 let runners = [];
@@ -241,10 +242,7 @@ function openSupport(person) {
   setOptionalText(dialogTime, person.route || "");
   setOptionalText(dialogLeg, person.role || "");
   dialogReflection.replaceChildren();
-  const message = document.createElement("p");
-  message.className = "reflection";
-  message.textContent = person.message.trim();
-  dialogReflection.append(message);
+  renderReflection(dialogReflection, person.message);
   if (!dialog.open) dialog.showModal();
   document.querySelector(".reflection-scroll").scrollTop = 0;
 }
@@ -256,10 +254,7 @@ function openKetua() {
   setOptionalText(dialogTime, "");
   setOptionalText(dialogLeg, ketua.role);
   dialogReflection.replaceChildren();
-  const message = document.createElement("p");
-  message.className = "reflection";
-  message.textContent = ketua.message.trim();
-  dialogReflection.append(message);
+  renderReflection(dialogReflection, ketua.message);
   if (!dialog.open) dialog.showModal();
   document.querySelector(".reflection-scroll").scrollTop = 0;
 }
@@ -356,6 +351,8 @@ function createCard(runner) {
     timeLine.textContent = timeLabel(time);
     body.append(timeLine);
   }
+  const strava = stravaLink(runner.strava);
+  if (strava) body.append(strava);
   body.append(collapsedDetails(runner));
 
   card.append(createPhoto(runner), body);
@@ -405,12 +402,9 @@ function fillDialog(runner) {
   appendRoleChips(dialogBadge, runner);
   setOptionalText(dialogTime, timeLabel(recordedTime(runner.finishTime)));
   setOptionalText(dialogLeg, runner.leg || "");
+  setStravaLink(dialogStrava, runner.strava);
   dialogReflection.replaceChildren();
-
-  const main = document.createElement("p");
-  main.className = "reflection";
-  main.textContent = reflectionText(runner.reflection);
-  dialogReflection.append(main);
+  renderReflection(dialogReflection, runner.reflection);
 
   for (const extra of extraReflections(runner)) {
     const section = document.createElement("section");
@@ -424,10 +418,7 @@ function fillDialog(runner) {
       byline.textContent = extra.note.trim();
       section.append(byline);
     }
-    const text = document.createElement("p");
-    text.className = "reflection";
-    text.textContent = extra.text.trim();
-    section.append(text);
+    renderReflection(section, extra.text);
     dialogReflection.append(section);
   }
 }
@@ -469,6 +460,40 @@ function setOptionalText(element, text) {
   element.textContent = text;
 }
 
+function stravaHref(value) {
+  if (typeof value !== "string" || !value.trim()) return "";
+  try {
+    const url = new URL(value.trim());
+    if (url.protocol !== "https:") return "";
+    if (url.hostname !== "www.strava.com" && url.hostname !== "strava.com") return "";
+    return url.href;
+  } catch {
+    return "";
+  }
+}
+
+function stravaLink(value) {
+  const href = stravaHref(value);
+  if (!href) return null;
+  const link = document.createElement("a");
+  link.className = "strava-link";
+  link.href = href;
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+  link.textContent = "Strava";
+  return link;
+}
+
+function setStravaLink(element, value) {
+  const href = stravaHref(value);
+  element.hidden = !href;
+  if (!href) {
+    element.removeAttribute("href");
+    return;
+  }
+  element.href = href;
+}
+
 function createPhoto(runner) {
   const src = photoSrc(runner.photo);
   if (!src) return initials(runner.name);
@@ -507,15 +532,217 @@ function photoSrc(photo) {
 }
 
 function reflectionPreview(text) {
-  const line = String(text || "")
-    .split("\n")
-    .map((part) => part.trim())
-    .find(Boolean);
-  if (!line) return "Reflection coming soon.";
-  return line.length > 140 ? `${line.slice(0, 137)}…` : line;
+  const raw = normalizeWa(text);
+  if (!raw) return "Reflection coming soon.";
+  const title = explicitTitle(raw) || interestingSentence(stripInlineMarkers(raw));
+  return title || "Reflection coming soon.";
 }
 
-function reflectionText(text) {
-  const value = String(text || "").trim();
-  return value || "Reflection coming soon.";
+function explicitTitle(raw) {
+  const plain = stripInlineMarkers(raw);
+  if (/^Catatan UM - ITB 2026 PlayOn 85\b/.test(plain)) return "Catatan UM - ITB 2026 PlayOn 85";
+  if (plain.includes("ajang silaturahmi diantara sesama Alumni ITB")) {
+    return "ajang silaturahmi diantara sesama Alumni ITB";
+  }
+  if (plain.includes("sepuh tapi tidak rapuh")) return "sepuh tapi tidak rapuh";
+  const lines = raw.split("\n").map((line) => line.trim());
+  const nonempty = lines.filter(Boolean);
+  const limit = Math.max(8, Math.floor(nonempty.length / 3));
+  for (let index = 0; index < nonempty.length && index <= limit; index += 1) {
+    const match = nonempty[index].match(/^\*([^*\n]+)\*$/);
+    if (match && !isGreeting(match[1]) && match[1].trim().length >= 8 && match[1].trim().length <= 90) {
+      return match[1].trim();
+    }
+  }
+  for (let index = 0; index < lines.length - 1; index += 1) {
+    if (!/^[=\-]{3,}$/.test(lines[index + 1])) continue;
+    const heading = stripInlineMarkers(lines[index]);
+    if (heading && !isGreeting(heading)) return heading;
+  }
+  const blocks = raw.split(/\n{2,}/).filter((block) => block.trim());
+  const opening = blocks[0]
+    ? blocks[0]
+        .split("\n")
+        .map((line) => stripInlineMarkers(line.trim()))
+        .filter((line) => line && !isGreeting(line))
+    : [];
+  if (opening.length === 1 && blocks.length > 1) {
+    const head = opening[0];
+    if (head.length <= 90 && (head.includes(":") || !/[.]$/.test(head))) return head;
+  }
+  if (opening[0] && opening[0].length <= 40 && /^(R\d+\b|UM ITB|UMITB)\b/i.test(opening[0]) && !opening[0].includes(":")) {
+    return opening[0];
+  }
+  return "";
+}
+
+function interestingSentence(plain) {
+  const pool = [];
+  for (const block of plain.split(/\n{2,}/)) {
+    const lines = block
+      .split("\n")
+      .map((line) => line.trim())
+      .filter((line) => line && !/^[=\-]{3,}$/.test(line));
+    if (lines.length === 1 && !isGreeting(lines[0]) && lines[0].length <= 80) pool.push([lines[0], true]);
+    for (const line of lines) {
+      if (isGreeting(line)) continue;
+      for (const sentence of waSentences(line)) {
+        if (!isGreeting(sentence)) pool.push([sentence, false]);
+      }
+    }
+  }
+  if (!pool.length) return "";
+  let bestIndex = 0;
+  for (let index = 1; index < pool.length; index += 1) {
+    const bestScore = sentenceScore(pool[bestIndex][0], pool[bestIndex][1]);
+    const nextScore = sentenceScore(pool[index][0], pool[index][1]);
+    if (nextScore > bestScore) bestIndex = index;
+  }
+  let [best] = pool[bestIndex];
+  if (sentenceScore(best, pool[bestIndex][1]) < 5) {
+    const opener = /^(alhamdulillah|ucapan|terima kasih|mohon maaf|terkhusus|khusus untuk)\b/i;
+    const fallback = pool.find(([sentence]) => {
+      const compact = sentence.replace(/\s+/g, " ").trim();
+      return compact.length >= 40 && !isGreeting(compact) && !opener.test(compact);
+    });
+    if (fallback) [best] = fallback;
+  }
+  const sentence = /^[a-zà-ÿ]/.test(best) ? best[0].toUpperCase() + best.slice(1) : best;
+  return sentence.replace(/\s+/g, " ").trim();
+}
+
+function sentenceScore(sentence, standalone) {
+  const compact = sentence.replace(/\s+/g, " ").trim();
+  if (isGreeting(compact) || compact.length < 18) return -100;
+  if (/^[-•💪]/.test(compact)) return -40;
+  let points = 0;
+  const quoted = compact.match(/[“"]([^“”"]+)[”"]/);
+  if (quoted) points += quoted[1].trim().length >= 12 ? 10 : 4;
+  if (compact.includes("=") && compact.length <= 80) points += 8;
+  if (standalone && compact.length <= 48) points += 6;
+  if (compact.length >= 32 && compact.length <= 120) points += 2;
+  if (compact.length > 160) points -= 5;
+  if (/^(terima kasih|mohon maaf|alhamdulillah|ucapan|semoga |selamat )/i.test(compact)) points -= 4;
+  if (/^(mungkin |siapa |apa )/i.test(compact)) points -= 3;
+  return points;
+}
+
+function isGreeting(line) {
+  const compact = line.replace(/\s+/g, " ").trim();
+  if (compact.length < 12) return true;
+  if (/^[=\-.*]{3,}$/.test(compact)) return true;
+  return (
+    compact.length < 90 &&
+    /^(assalam|assalamu|waalaikum|wassalam|semoga sehat|alhamdulillah[.!\s]*$|aamiin|punten\b|sahabat\d*\b|terimakasih atas|haturnuhun|selamat malam)/i.test(
+      compact,
+    )
+  );
+}
+
+function renderReflection(container, source) {
+  const blocks = reflectionBlocks(source);
+  if (!blocks.length) {
+    const empty = document.createElement("p");
+    empty.className = "reflection";
+    empty.textContent = "Reflection coming soon.";
+    container.append(empty);
+    return;
+  }
+  for (const lines of blocks) {
+    const paragraph = document.createElement("p");
+    paragraph.className = "reflection";
+    lines.forEach((line, index) => {
+      if (index) paragraph.append(document.createElement("br"));
+      appendWaInline(paragraph, line);
+    });
+    container.append(paragraph);
+  }
+}
+
+function reflectionBlocks(source) {
+  const text = normalizeWa(source);
+  if (!text) return [];
+  return text.split(/\n{2,}/).flatMap((part) => {
+    const lines = part
+      .split("\n")
+      .map((line) => line.trim())
+      .filter((line) => line && !/^[=\-]{3,}$/.test(line));
+    if (!lines.length) return [];
+    if (lines.length === 1 && lines[0].length > 360) {
+      const pieces = waSentences(lines[0]);
+      const groups = [];
+      for (let i = 0; i < pieces.length; i += 2) groups.push([joinSentences(pieces.slice(i, i + 2))]);
+      return groups.length ? groups : [lines];
+    }
+    return [lines];
+  });
+}
+
+function normalizeWa(value) {
+  return String(value || "")
+    .replace(/\u2068|\u2069/g, "")
+    .replace(/[\u200e\u200f\ufeff]/g, "")
+    .replace(/[ \t]+\n/g, "\n")
+    .trim();
+}
+
+function stripInlineMarkers(value) {
+  return value.replace(/```([^`]+)```|\*([^*\n]+)\*|_([^_\n]+)_|~([^~\n]+)~/g, (full, code, bold, italic, strike) => {
+    const inner = code ?? bold ?? italic ?? strike;
+    if (!code && /^\s|\s$/.test(inner)) return full;
+    return inner;
+  });
+}
+
+function waSentences(text) {
+  const masked = text.replace(/"[^"\n]{1,80}"|“[^”\n]{1,80}”/g, (quote) => quote.replaceAll(".", "\0"));
+  return masked
+    .split(/(?<=[.!?])\s+|\.{2,}\s*/)
+    .map((part) => part.replaceAll("\0", ".").trim())
+    .filter(Boolean);
+}
+
+function joinSentences(parts) {
+  let text = "";
+  for (const part of parts) {
+    if (!text) {
+      text = part;
+      continue;
+    }
+    text += `${/[.!?…:]$/.test(text) ? " " : ". "}${part}`;
+  }
+  return text;
+}
+
+function appendWaInline(parent, line) {
+  const pattern = /```([^`]+)```|\*([^*\n]+)\*|_([^_\n]+)_|~([^~\n]+)~/g;
+  let last = 0;
+  for (const match of line.matchAll(pattern)) {
+    const [full, code, bold, italic, strike] = match;
+    const inner = code ?? bold ?? italic ?? strike;
+    const valid = code || !/^\s|\s$/.test(inner);
+    const start = match.index ?? 0;
+    if (start > last) parent.append(document.createTextNode(line.slice(last, start)));
+    if (!valid) {
+      parent.append(document.createTextNode(full));
+    } else if (code) {
+      const el = document.createElement("code");
+      el.textContent = code;
+      parent.append(el);
+    } else if (bold) {
+      const el = document.createElement("strong");
+      el.textContent = bold;
+      parent.append(el);
+    } else if (italic) {
+      const el = document.createElement("em");
+      el.textContent = italic;
+      parent.append(el);
+    } else {
+      const el = document.createElement("s");
+      el.textContent = strike;
+      parent.append(el);
+    }
+    last = start + full.length;
+  }
+  if (last < line.length) parent.append(document.createTextNode(line.slice(last)));
 }

@@ -345,8 +345,6 @@ html[data-theme="light"] .icon-moon {
   background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
 }
 
-.reflection-preview,
-.reflection,
 .finish-time,
 .leg {
   white-space: pre-wrap;
@@ -367,11 +365,21 @@ html[data-theme="light"] .icon-moon {
   line-height: 1.35;
 }
 
+.strava-link {
+  display: inline-block;
+  margin: 0.2rem 0 0;
+  color: var(--accent-purple);
+  font-size: 0.92rem;
+  font-weight: 650;
+}
+
 .reflection {
   line-height: 1.55;
 }
 
 .reflection-preview {
+  font-weight: 650;
+  line-height: 1.35;
   cursor: pointer;
 }
 
@@ -468,6 +476,10 @@ html[data-theme="light"] .icon-moon {
 .reflection-scroll .reflection {
   margin: 0;
   font-size: clamp(1.05rem, 2.4vw, 1.25rem);
+}
+
+.reflection-scroll .reflection + .reflection {
+  margin-top: 0.9rem;
 }
 
 .to-top {
