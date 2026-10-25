@@ -29,12 +29,6 @@ themeButton.addEventListener("click", () => {
   syncThemeButton();
 });
 
-window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (event) => {
-  if (readStoredTheme()) return;
-  document.documentElement.dataset.theme = event.matches ? "dark" : "light";
-  syncThemeButton();
-});
-
 searchInput.addEventListener("input", () => {
   nameQuery = searchInput.value;
   if (dialog.open) dialog.close();
@@ -271,18 +265,9 @@ function openKetua() {
 }
 
 function syncThemeButton() {
-  const dark = document.documentElement.dataset.theme === "dark";
+  const dark = document.documentElement.dataset.theme !== "light";
   themeButton.setAttribute("aria-pressed", String(dark));
   themeLabel.textContent = dark ? "Switch to light mode" : "Switch to dark mode";
-}
-
-function readStoredTheme() {
-  try {
-    const value = localStorage.getItem("theme");
-    return value === "dark" || value === "light" ? value : "";
-  } catch {
-    return "";
-  }
 }
 
 async function loadRunners() {

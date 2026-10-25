@@ -20,7 +20,7 @@ Mobile
 index.html
 css/styles.css
 js/app.js                  roster, search, theme, Ketua, and Team Support
-js/theme.js                applies the saved or system theme before paint
+js/theme.js                applies the saved theme, or dark mode, before paint
 data/runners.json          published roster, including reflections
 data/runners.local.json    optional local copy, this machine only
 assets/photos/             runner portraits from the category posters
@@ -36,7 +36,7 @@ The page uses `data/runners.local.json` when that file is present, and otherwise
 - Open a reflection to read it full screen. The text scrolls, and Close returns to the cards.
 - On a phone, scroll down and an arrow at the bottom right returns to the top.
 - Krishna's message sits above the roster. Team Support is its own group, linked from the hero.
-- The moon and sun button switches light and dark. The choice is saved in this browser. A first visit follows the device setting.
+- The moon and sun button switches light and dark. The page opens in dark mode. A choice is saved in this browser.
 - Photo collection opens the team album: https://photos.app.goo.gl/wH6TLBaq8RdcZBXQA
 
 ## Preview

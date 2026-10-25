@@ -1,25 +1,4 @@
 :root {
-  --text: #0f172a;
-  --accent-cyan: #06b6d4;
-  --accent-purple: #9333ea;
-  --motto: #9333ea;
-  --card: #ffffff;
-  --toolbar: rgba(255, 255, 255, 0.9);
-  --input: #ffffff;
-  --chip: #e0f2fe;
-  --empty: rgba(255, 255, 255, 0.88);
-  --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
-  --dialog: linear-gradient(180deg, #ffffff 0%, #e0f2fe 42%, #dbeafe 100%);
-  --page: linear-gradient(180deg, #ffffff 0%, #7dd3fc 46%, #1e40af 100%);
-  color: var(--text);
-  color-scheme: light;
-  font-family: "Segoe UI", system-ui, sans-serif;
-  background: var(--page);
-  background-attachment: fixed;
-  min-height: 100%;
-}
-
-html[data-theme="dark"] {
   --text: #f8fafc;
   --accent-cyan: #22d3ee;
   --accent-purple: #c084fc;
@@ -32,7 +11,28 @@ html[data-theme="dark"] {
   --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
   --dialog: linear-gradient(180deg, #020617 0%, #0f172a 48%, #1e3a8a 100%);
   --page: linear-gradient(180deg, #020617 0%, #0f172a 46%, #1e3a8a 100%);
+  color: var(--text);
   color-scheme: dark;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: var(--page);
+  background-attachment: fixed;
+  min-height: 100%;
+}
+
+html[data-theme="light"] {
+  --text: #0f172a;
+  --accent-cyan: #06b6d4;
+  --accent-purple: #9333ea;
+  --motto: #9333ea;
+  --card: #ffffff;
+  --toolbar: rgba(255, 255, 255, 0.9);
+  --input: #ffffff;
+  --chip: #e0f2fe;
+  --empty: rgba(255, 255, 255, 0.88);
+  --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  --dialog: linear-gradient(180deg, #ffffff 0%, #e0f2fe 42%, #dbeafe 100%);
+  --page: linear-gradient(180deg, #ffffff 0%, #7dd3fc 46%, #1e40af 100%);
+  color-scheme: light;
 }
 
 * {
@@ -77,17 +77,22 @@ main {
   outline-offset: 2px;
 }
 
-.theme-toggle svg {
-  width: 1.35rem;
-  height: 1.35rem;
+html[data-theme="light"] .theme-toggle {
+  border: 1px solid rgba(15, 23, 42, 0.28);
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.18);
 }
 
-.icon-sun,
-html[data-theme="dark"] .icon-moon {
+.theme-toggle svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.icon-moon,
+html[data-theme="light"] .icon-sun {
   display: none;
 }
 
-html[data-theme="dark"] .icon-sun {
+html[data-theme="light"] .icon-moon {
   display: block;
 }
 
