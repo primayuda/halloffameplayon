@@ -23,9 +23,10 @@ jobs:
       - name: Assemble site
         run: |
           mkdir -p _site/data _site/assets
-          cp index.html _site/
+          cp index.html favicon.ico _site/
           cp -R css js _site/
           cp -R assets/photos assets/logos _site/assets/
+          cp assets/favicon.png assets/og.png _site/assets/
           cp data/runners.json _site/data/runners.json
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

@@ -24,6 +24,7 @@ js/app.js                  roster, search, theme, Ketua, and Team Support
 js/theme.js                applies the saved theme, or dark mode, before paint
 data/runners.json          published roster, including reflections
 data/runners.local.json    optional local copy, this machine only
+assets/favicon.png         browser tab icon, PNG fallback
 assets/og.png              image shown when the link is shared
 assets/photos/             runner portraits from the category posters
 assets/logos/              official logos
