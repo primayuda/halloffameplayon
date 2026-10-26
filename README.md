@@ -44,7 +44,7 @@ The page uses `data/runners.local.json` when that file is present, and otherwise
 - Team Support is its own group. Each card shows the role and the stretch they covered. Asrul and Hariyono have photos. Wicak rode a motorcycle from start to finish.
 - The moon and sun button switches light and dark. The page opens in dark mode. A choice is saved in this browser.
 - The browser tab shows a bold 85. Sharing the page link shows the full PlayOn 85 logo.
-- Photo collection opens the team album: https://photos.app.goo.gl/wH6TLBaq8RdcZBXQA
+- Photo collection opens the team album: https://photos.google.com/share/AF1QipMrbWnA-2rNb946OTYhvqC97MzYFHCpqN8AE-5Za4WM5RB3uDpt90uer45ys8_08w?key=by11SEhXLWQ5aEgzaXFYdTRGb0FQQ2RIMlhncFdB
 
 ## Preview
 
