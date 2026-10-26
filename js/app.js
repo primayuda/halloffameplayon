@@ -157,28 +157,28 @@ const supportTeam = [
     name: "Mira Amrita",
     role: "Team Support",
     route: "Leg 16 → Finish · Car",
-    photo: "",
+    photo: "mira.jpg",
     message: "",
   },
   {
     name: "Prima",
     role: "Team Support",
     route: "Legs 5–7 · Basecamp Bogor",
-    photo: "",
+    photo: "prima.jpg",
     message: "",
   },
   {
     name: "Asep M",
     role: "Team Support",
     route: "Legs 6–9 · Motorcycle",
-    photo: "",
+    photo: "asep.jpg",
     message: "",
   },
   {
     name: "Yos",
     role: "Team Support",
     route: "Start → WS-4 Cibinong · Car",
-    photo: "",
+    photo: "yos.jpg",
     message: `Cerita Ku : Jadi Team Support Playon85 di UMITB 2026 — Rencana yang Berubah-ubah
 
 Begitu pendaftaran Team Support (TS) Playon85 untuk Ultra Marathon ITB (UMITB) 2026 dibuka, tanpa pikir panjang saya langsung mendaftar. Memang selama ini, setiap ada gelaran UM ITB Jakarta–Bandung, saya selalu menyempatkan diri untuk ikut menjadi Team Support Playon85, tim para alumni ITB angkatan 1985. Biasanya saya kebagian support di rute belakang, selepas Cianjur hingga finish di ITB, meskipun pernah juga bertugas di leg awal Jakarta–Cibinong.
@@ -287,14 +287,14 @@ PLAYON85!`,
     name: "Mpie",
     role: "Team Support",
     route: "Legs 9–10 · Car",
-    photo: "",
+    photo: "mpie.jpg",
     message: "",
   },
   {
     name: "Affan Hidayat",
     role: "Team Support",
     route: "Start → Leg 1 · Motorcycle",
-    photo: "",
+    photo: "affan.jpg",
     message: `Alhamdulillah selamat untuk para PLAYON85 runners, yg kereen. Semoga selalu dalam keadaan sehat walafiat. Juga kawan2 TS yg saling jaga dan dukung kawan2... Insya Allah ketemu lagi di next season...🤲`,
   },
   {
@@ -340,14 +340,14 @@ Tetap semangat..🔥
     name: "Novarini",
     role: "Team Support",
     route: "Start → Leg 2 · Car",
-    photo: "",
+    photo: "novarini.jpg?v=2",
     message: "",
   },
   {
     name: "Dudus R Kudus",
     role: "Team Support",
     route: "Legs 7–8 · Motorcycle",
-    photo: "",
+    photo: "dudus.jpg",
     message: "",
   },
   {
@@ -366,21 +366,21 @@ Tetap semangat..🔥
     name: "Syah Inderaprana",
     role: "Team Support",
     route: "Pickup and accompany · Motorcycle",
-    photo: "",
+    photo: "syah.jpg",
     message: "",
   },
   {
     name: "Sakir",
     role: "Team Support",
     route: "Legs 10–16 → Finish · Car",
-    photo: "",
+    photo: "sakir.jpg",
     message: "",
   },
   {
     name: "Wicak",
     role: "Team Support",
     route: "Start → Finish · Motorcycle",
-    photo: "",
+    photo: "wicak.jpg",
     message: "",
   },
 ];
@@ -905,9 +905,12 @@ function albumThumb(value) {
 function photoSrc(photo) {
   if (typeof photo !== "string") return "";
   if (/^https:\/\//i.test(photo)) return photo;
-  const name = photo.split("/").pop() || "";
+  const [file, version] = photo.split("?");
+  const name = file.split("/").pop() || "";
   if (!/^[a-zA-Z0-9._-]+$/.test(name)) return "";
-  return `assets/photos/${name}`;
+  if (version !== undefined && !/^v=\d+$/.test(version)) return "";
+  const src = `assets/photos/${name}`;
+  return version ? `${src}?${version}` : src;
 }
 
 function reflectionPreview(text) {

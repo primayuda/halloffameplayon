@@ -41,7 +41,7 @@ The page uses `data/runners.local.json` when that file is present, and otherwise
 - Open a reflection to read it full screen. The text scrolls, and Close returns to the cards. Tuti, Triyani, Asrul, and Hariyono also show their album photos there. Each thumbnail opens that photo in the team album. The round portrait on the card stays as it is.
 - On a phone, scroll down and an arrow at the bottom right returns to the top.
 - Krishna and Hariyono sit side by side above the roster. Hariyono's title is chief of the mission, taken from Krishna's message. Krishna is also listed with Team Support.
-- Team Support is its own group. Each card shows the role and the stretch they covered. Asrul and Hariyono have photos. Wicak rode a motorcycle from start to finish. Yos drove from the start to WS-4 Cibinong. His title is Cerita Ku : Jadi Team Support Playon85 di UMITB 2026 — Rencana yang Berubah-ubah.
+- Team Support is its own group. Each card shows the role and the stretch they covered. Krishna, Asrul, Mira, Prima, Asep, Yos, Mpie, Affan, Yoyon, Novarini, Dudus, Hariyono, Syah, Sakir, and Wicak have photos. Wicak rode a motorcycle from start to finish. Yos drove from the start to WS-4 Cibinong. His title is Cerita Ku : Jadi Team Support Playon85 di UMITB 2026 — Rencana yang Berubah-ubah.
 - The moon and sun button switches light and dark. The page opens in dark mode. A choice is saved in this browser.
 - The browser tab shows a bold 85. Sharing the page link shows the full PlayOn 85 logo.
 - Photo collection opens the team album: https://photos.google.com/share/AF1QipMrbWnA-2rNb946OTYhvqC97MzYFHCpqN8AE-5Za4WM5RB3uDpt90uer45ys8_08w?key=by11SEhXLWQ5aEgzaXFYdTRGb0FQQ2RIMlhncFdB
