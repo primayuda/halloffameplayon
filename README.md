@@ -36,7 +36,7 @@ The page uses `data/runners.local.json` when that file is present, and otherwise
 
 - Filter by All, R16, R8, R4, or TS, and search by name. The two work together. All searches runners and Team Support. A race filter searches that category. TS searches Team Support.
 - Each runner card shows the leg, the leg time, and a link to that runner's Strava profile. Athmam's card also has a Captain chip.
-- The card shows a short reflection title. Open it to read the full note. Notes pasted from WhatsApp keep their bold headings and paragraph breaks.
+- The card shows a short reflection title. Open it to read the full note. Notes pasted from WhatsApp keep their bold headings and paragraph breaks. Sjukron's title is Pengalaman Ultra Marathon ITB 2026.
 - Hendi's leg is 1:47:32 and Arief H's is 1:54:20. CP11 was not recorded, so those two times share the official gap from Luluk's finish to Arief H's finish, split by leg distance.
 - Open a reflection to read it full screen. The text scrolls, and Close returns to the cards.
 - On a phone, scroll down and an arrow at the bottom right returns to the top.
