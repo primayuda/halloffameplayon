@@ -4,6 +4,7 @@ const themeButton = document.querySelector("#theme-toggle");
 const themeLabel = themeButton.querySelector(".visually-hidden");
 const rosterEl = document.querySelector("#roster");
 const searchInput = document.querySelector("#runner-search");
+const searchLabel = document.querySelector("#search-label");
 const filterButtons = [...document.querySelectorAll("[data-filter]")];
 const dialog = document.querySelector("#reflection-dialog");
 const dialogPhoto = document.querySelector("#dialog-photo");
@@ -16,6 +17,7 @@ const dialogReflection = document.querySelector("#dialog-reflection");
 
 let runners = [];
 let activeFilter = "All";
+let searchScope = "all";
 let nameQuery = "";
 
 syncThemeButton();
@@ -63,13 +65,41 @@ syncToTop();
 
 for (const button of filterButtons) {
   button.addEventListener("click", () => {
-    activeFilter = button.dataset.filter;
-    if (dialog.open) dialog.close();
-    for (const item of filterButtons) {
-      item.setAttribute("aria-pressed", String(item === button));
-    }
-    renderRoster();
+    setFilter(button.dataset.filter);
   });
+}
+
+function setFilter(filter) {
+  activeFilter = filter;
+  if (filter === "TS") searchScope = "ts";
+  else if (filter === "All") searchScope = "all";
+  else searchScope = "runners";
+  if (dialog.open) dialog.close();
+  syncSearchControls();
+  renderRoster();
+  renderSupport();
+}
+
+function syncSearchControls() {
+  const label =
+    searchScope === "ts"
+      ? "Search team support"
+      : searchScope === "runners"
+        ? "Search runner name"
+        : "Search runner or team support";
+  searchInput.placeholder = label;
+  searchLabel.textContent = label;
+  for (const item of filterButtons) {
+    item.setAttribute("aria-pressed", String(item.dataset.filter === activeFilter));
+  }
+}
+
+function showsRunners() {
+  return searchScope !== "ts";
+}
+
+function showsSupport() {
+  return searchScope !== "runners";
 }
 
 const ketua = {
@@ -104,6 +134,62 @@ Koperasi Delapan Lima (KDL) , dan Yayasan Build & Share 85.`,
 };
 
 const supportTeam = [
+  {
+    name: "Krishna",
+    role: "Ketua Ikatan Alumni ITB 85",
+    route: "Start → Finish",
+    photo: "krishna.jpg",
+    message: ketua.message,
+  },
+  {
+    name: "Asrul Iman",
+    role: "Team Support",
+    route: "Start → Finish",
+    photo: "asrul.jpg",
+    message: "",
+  },
+  {
+    name: "Mira Amrita",
+    role: "Team Support",
+    route: "Leg 16 → Finish · Car",
+    photo: "",
+    message: "",
+  },
+  {
+    name: "Prima",
+    role: "Team Support",
+    route: "Legs 5–7 · Basecamp Bogor",
+    photo: "",
+    message: "",
+  },
+  {
+    name: "Asep M",
+    role: "Team Support",
+    route: "Legs 6–9 · Motorcycle",
+    photo: "",
+    message: "",
+  },
+  {
+    name: "Yos",
+    role: "Team Support",
+    route: "Legs 13–16 → Finish · Motorcycle",
+    photo: "",
+    message: "",
+  },
+  {
+    name: "Mpie",
+    role: "Team Support",
+    route: "Legs 9–10 · Car",
+    photo: "",
+    message: "",
+  },
+  {
+    name: "Affan Hidayat",
+    role: "Team Support",
+    route: "Start → Leg 1 · Motorcycle",
+    photo: "",
+    message: `Alhamdulillah selamat untuk para PLAYON85 runners, yg kereen. Semoga selalu dalam keadaan sehat walafiat. Juga kawan2 TS yg saling jaga dan dukung kawan2... Insya Allah ketemu lagi di next season...🤲`,
+  },
   {
     name: "Yoyon",
     role: "TS Dini Hari",
@@ -143,6 +229,49 @@ Tetap semangat..🔥
 
 *Yoyon/TS Dini Hari*`,
   },
+  {
+    name: "Novarini",
+    role: "Team Support",
+    route: "Start → Leg 2 · Car",
+    photo: "",
+    message: "",
+  },
+  {
+    name: "Dudus R Kudus",
+    role: "Team Support",
+    route: "Legs 7–8 · Motorcycle",
+    photo: "",
+    message: "",
+  },
+  {
+    name: "Hariyono Kribo",
+    role: "chief of the mission",
+    route: "Start → Finish · Car",
+    photo: "hariyono.jpg",
+    message: `Kalau 85 kan Listen to your Heart ya, Paketu😀
+(Sambil lari sambil dengerin Roxette)`,
+  },
+  {
+    name: "Syah Inderaprana",
+    role: "Team Support",
+    route: "Pickup and accompany · Motorcycle",
+    photo: "",
+    message: "",
+  },
+  {
+    name: "Sakir",
+    role: "Team Support",
+    route: "Legs 10–16 → Finish · Car",
+    photo: "",
+    message: "",
+  },
+  {
+    name: "Wicak",
+    role: "Team Support",
+    route: "Start → Finish · Motorcycle",
+    photo: "",
+    message: "",
+  },
 ];
 
 renderKetua();
@@ -155,6 +284,11 @@ loadRunners().then((loaded) => {
 
 function renderKetua() {
   const section = document.querySelector("#ketua");
+  const hariyono = supportTeam.find((person) => person.name === "Hariyono Kribo");
+  section.replaceChildren(createKetuaCard(), createMissionCard(hariyono));
+}
+
+function createKetuaCard() {
   const card = document.createElement("article");
   card.className = "runner-card ketua-card";
 
@@ -184,18 +318,68 @@ function renderKetua() {
 
   body.append(heading, role, preview, button);
   card.append(createPhoto(ketua), body);
-  section.replaceChildren(card);
+  return card;
+}
+
+function createMissionCard(person) {
+  const card = document.createElement("article");
+  card.className = "runner-card ketua-card";
+
+  const body = document.createElement("div");
+  const heading = document.createElement("div");
+  heading.className = "runner-heading";
+  const name = document.createElement("h2");
+  name.textContent = person.name;
+  const badge = document.createElement("span");
+  badge.className = "badge";
+  badge.textContent = person.role;
+  heading.append(name, badge);
+
+  const route = document.createElement("p");
+  route.className = "leg";
+  route.textContent = person.route;
+
+  const preview = document.createElement("p");
+  preview.className = "reflection-preview";
+  preview.textContent = reflectionPreview(person.message);
+  preview.addEventListener("click", () => openSupport(person));
+
+  const button = document.createElement("button");
+  button.type = "button";
+  button.textContent = "Read full message";
+  button.addEventListener("click", () => openSupport(person));
+
+  body.append(heading, route, preview, button);
+  card.append(createPhoto(person), body);
+  return card;
 }
 
 function renderSupport() {
   const section = document.querySelector("#support");
   const roster = document.querySelector("#support-roster");
-  const query = nameQuery.trim().toLowerCase();
+  if (!showsSupport()) {
+    section.hidden = true;
+    roster.replaceChildren();
+    return;
+  }
+  const query = searchScope === "runners" ? "" : nameQuery.trim().toLowerCase();
   const visible = supportTeam.filter(
     (person) => !query || person.name.toLowerCase().includes(query),
   );
-  section.hidden = visible.length === 0;
   roster.replaceChildren();
+  if (visible.length === 0) {
+    if (showsRunners()) {
+      section.hidden = true;
+      return;
+    }
+    section.hidden = false;
+    const empty = document.createElement("p");
+    empty.className = "empty";
+    empty.textContent = `No team support matches “${nameQuery.trim()}”.`;
+    roster.append(empty);
+    return;
+  }
+  section.hidden = false;
   for (const person of visible) roster.append(createSupportCard(person));
 }
 
@@ -216,9 +400,13 @@ function createSupportCard(person) {
   const role = document.createElement("p");
   role.className = "leg";
   role.textContent = person.role;
-  const route = document.createElement("p");
-  route.className = "finish-time";
-  route.textContent = person.route;
+  body.append(heading, role);
+  if (person.route) {
+    const route = document.createElement("p");
+    route.className = "finish-time";
+    route.textContent = person.route;
+    body.append(route);
+  }
 
   const preview = document.createElement("p");
   preview.className = "reflection-preview";
@@ -230,7 +418,7 @@ function createSupportCard(person) {
   button.textContent = "Read full message";
   button.addEventListener("click", () => openSupport(person));
 
-  body.append(heading, role, route, preview, button);
+  body.append(preview, button);
   card.append(createPhoto(person), body);
   return card;
 }
@@ -290,16 +478,35 @@ function isRunner(value) {
   );
 }
 
-function renderRoster() {
-  const query = nameQuery.trim().toLowerCase();
-  const visible = runners.filter((runner) => {
+function runnerMatches(query) {
+  return runners.filter((runner) => {
     const categoryMatches = activeFilter === "All" || runner.category === activeFilter;
-    const nameMatches = runner.name.toLowerCase().includes(query);
+    const nameMatches = !query || runner.name.toLowerCase().includes(query);
     return categoryMatches && nameMatches;
   });
+}
+
+function renderRoster() {
+  if (!showsRunners()) {
+    rosterEl.hidden = true;
+    rosterEl.replaceChildren();
+    return;
+  }
+  const query = searchScope === "ts" ? "" : nameQuery.trim().toLowerCase();
+  const visible = runnerMatches(query);
   rosterEl.replaceChildren();
 
   if (visible.length === 0) {
+    const supportQuery = searchScope === "runners" ? null : nameQuery.trim().toLowerCase();
+    const supportHit =
+      supportQuery !== null &&
+      showsSupport() &&
+      supportTeam.some((person) => person.name.toLowerCase().includes(supportQuery));
+    if (supportHit) {
+      rosterEl.hidden = true;
+      return;
+    }
+    rosterEl.hidden = false;
     const empty = document.createElement("p");
     empty.className = "empty";
     empty.textContent = emptyMessage(query);
@@ -307,6 +514,7 @@ function renderRoster() {
     return;
   }
 
+  rosterEl.hidden = false;
   for (const runner of visible) rosterEl.append(createCard(runner));
 }
 
@@ -315,6 +523,9 @@ function emptyMessage(query) {
     return "Runner records stay on this computer until they are ready to publish.";
   }
   const typed = nameQuery.trim();
+  if (query && searchScope === "all" && activeFilter === "All") {
+    return `No runners or team support match “${typed}”.`;
+  }
   if (query && activeFilter !== "All") return `No ${activeFilter} runners match “${typed}”.`;
   if (query) return `No runners match “${typed}”.`;
   return `No ${activeFilter} runners in this view.`;

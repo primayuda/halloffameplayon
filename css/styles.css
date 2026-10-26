@@ -179,12 +179,13 @@ html[data-theme="light"] .icon-moon {
 
 .ketua {
   scroll-margin-top: 1rem;
+  display: grid;
+  gap: 1rem;
   margin-top: 1.25rem;
 }
 
 .ketua-card {
-  max-width: 42rem;
-  margin-inline: auto;
+  height: 100%;
 }
 
 .support {
@@ -249,7 +250,13 @@ html[data-theme="light"] .icon-moon {
 
 .filters {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.5rem;
+}
+
+.roster[hidden],
+.support[hidden] {
+  display: none;
 }
 
 .filters button,
@@ -514,6 +521,10 @@ html[data-theme="light"] .icon-moon {
 }
 
 @media (min-width: 720px) {
+  .ketua {
+    grid-template-columns: 1fr 1fr;
+  }
+
   .to-top {
     display: none !important;
   }
