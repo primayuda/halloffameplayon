@@ -177,9 +177,111 @@ const supportTeam = [
   {
     name: "Yos",
     role: "Team Support",
-    route: "Legs 13–16 → Finish · Motorcycle",
+    route: "Start → WS-4 Cibinong · Car",
     photo: "",
-    message: "",
+    message: `Cerita Ku : Jadi Team Support Playon85 di UMITB 2026 — Rencana yang Berubah-ubah
+
+Begitu pendaftaran Team Support (TS) Playon85 untuk Ultra Marathon ITB (UMITB) 2026 dibuka, tanpa pikir panjang saya langsung mendaftar. Memang selama ini, setiap ada gelaran UM ITB Jakarta–Bandung, saya selalu menyempatkan diri untuk ikut menjadi Team Support Playon85, tim para alumni ITB angkatan 1985. Biasanya saya kebagian support di rute belakang, selepas Cianjur hingga finish di ITB, meskipun pernah juga bertugas di leg awal Jakarta–Cibinong.
+
+Tapi tahun ini ternyata agak berbeda.
+
+Setelah mendaftar, baru ketahuan bahwa pada akhir pekan yang sama ada dua acara lain yang berbenturan. Pertama, annual meeting kantor yang kali ini dijadwalkan full day di akhir pekan. Kedua, undangan pernikahan yang sebelumnya sudah saya janjikan kepada istri untuk hadir bersama, sekaligus mengantarnya.
+
+Dengan berat hati, saya pun mengabari Chief Playon85 bahwa tahun ini sepertinya tidak bisa ikut menjadi TS.
+
+Namun, setelah dipikir-pikir, saya mengajukan izin untuk tidak menghadiri annual meeting kantor dengan alasan sudah punya janji sebelumnya dengan istri. Syukurlah, izin dikabulkan.
+
+Acara pernikahannya sendiri ternyata di Cianjur, Sabtu sore. Artinya, kami baru perlu berangkat dari Bandung pada Sabtu siang. Nah, berarti masih ada kesempatan untuk ikut support pada Jumat malam!
+
+Akhirnya saya sampaikan di grup Playon85 bahwa saya bisa bergabung sejak start Jumat malam sampai sekitar pukul 02.00 dini hari, kemudian pulang ke Bandung untuk melanjutkan agenda pribadi.
+
+Ternyata saya malah mendapat tugas khusus, yaitu membawa pulang pelari yang menyelesaikan leg-nya di WS-4 Cibinong: Halomoan dari Tim R4 dan Sergei dari Tim R8.
+
+Melihat perkiraan jadwal, keduanya diperkirakan selesai sekitar pukul 03.00 pagi. Ya sudahlah, mundur satu jam dari rencana awal. Masih OK lah.
+
+Jumat Malam — Mulai Bertugas
+
+Saya bergabung dengan teman-teman di Kemendikti, titik start UMITB 2026, hingga sekitar pukul 20.30. Affan juga berencana ikut di mobil saya untuk bersama-sama menjalankan tugas TS sesuai rute yang saya rencanakan.
+
+Para pelari mulai start pukul 21.00, dalam beberapa grup dengan waktu keberangkatan yang berbeda. Setelah semuanya diberangkatkan, sekitar pukul 22.00 saya membawa mobil menuju WS-1, Wisma Raharja di TB Simatupang.
+
+Di sana Inna, pelari kedua, sudah standby untuk menerima estafet dari Tuti. Sementara Ella dan Halomoan juga akan melapor di WS-1 sebelum melanjutkan ke WS berikutnya.
+
+Ada satu pertemuan menarik di WS-1. Saya bertemu Prof. Adang Surahman, alumni ITB angkatan 1973 (Fortuga), yang dulu merupakan dosen saya. Ternyata beliau menjadi pelari kedua di timnya. Salut sekali! Di usia beliau sekarang, masih sanggup mengikuti kegiatan seberat Ultra Marathon Jakarta–Bandung. Kami sempat bertegur sapa dan berfoto bersama.
+
+Dari WS-1 kami melanjutkan perjalanan. Di sekitar Lenteng Agung, sempat berhenti untuk menyapa dan memberi semangat Ella yang sedang berlari.
+
+Rencananya menuju WS-2, tetapi ternyata lalu lintas macet parah. Akhirnya saya putuskan langsung saja menuju WS-3.
+
+Ada hal lain yang mulai terasa malam itu. Pelari pertama Playon85 kali ini tidak secepat pelari pertama pada tahun-tahun sebelumnya. Akibatnya, prediksi waktu kedatangan di berbagai WS mulai bergeser, semakin lambat dari jadwal awal.
+
+Menunggu di WS-3
+
+Sesampainya di WS-3, setelah melihat kecepatan aktual tim, saya mulai menghitung ulang perkiraan kedatangan pelari di WS-4.
+
+Sepertinya Sergei baru akan menyelesaikan leg-nya sekitar subuh. Sementara Halomoan sudah mengabarkan bahwa ia membatalkan rencana ikut mobil saya pulang ke Bandung.
+
+Wah, rencana pulang jam 02.00 sudah jelas meleset jauh.
+
+Karena masih ada waktu menunggu, saya manfaatkan untuk tidur sebentar di dalam mobil.
+
+Saat Halomoan mencapai WS-3, saya sebenarnya sudah terbangun, tetapi tidak sempat menyambutnya.
+
+Di WS-3, bersama Jindol, HarKrib, Asrul, dan Affan, kami kemudian menyambut Sergei yang akan melanjutkan lari menuju WS-4, serta Edward yang menyerahkan estafet kepada Yusrizal.
+
+Setelah Sergei dan Yusrizal berangkat, saya dan Affan pun bergerak menuju WS-4 Cibinong.
+
+Di WS-4 kami menyambut Halomoan yang menyelesaikan empat leg-nya, kemudian Yusrizal, dan akhirnya Sergei yang menuntaskan dua leg-nya hampir pukul 05.00 pagi.
+
+Jadi, dari rencana semula pulang pukul 02.00, lalu bergeser menjadi pukul 03.00, ternyata baru bisa meninggalkan Cibinong selepas hampir pukul 05.00. Begitulah, rencana di atas kertas memang tidak selalu cocok dengan kondisi di lapangan. Apalagi kalau menyangkut ultra marathon!
+
+Setelah Sergei siap, kami bertiga—saya, Affan, dan Sergei—langsung masuk tol menuju Bandung. Sempat mampir di Rest Area Tol Cimanggis untuk salat Subuh.
+
+Akhirnya sampai rumah sekitar pukul 08.00 pagi. Langsung tidur!
+
+Sabtu Siang — Eh, Ketemu Playon85 Lagi
+
+Siangnya, sesuai janji, saya berangkat bersama istri menuju Cianjur untuk menghadiri undangan pernikahan.
+
+Ternyata waktu perjalanan kami bertepatan dengan para pelari Playon85 yang sedang memasuki kawasan Cianjur. Jadi, meskipun tugas TS saya sudah selesai di Cibinong, ternyata masih bisa ketemu dan memberi semangat kepada kawan-kawan.
+
+Di perjalanan saya melihat Edo yang tampak sudah sangat kelelahan, sehingga hanya mampu berjalan menuju WS-11.
+
+Saya juga menyempatkan berhenti untuk menunggu Hendi lewat. Ternyata Hendi pun sudah berjalan, bukan berlari lagi. Sempat saya abadikan dengan video.
+
+Melihat kondisi mereka, semakin terasa betapa berat perjuangan para pelari menempuh rute Jakarta–Bandung. Ketika tenaga sudah terkuras, bisa terus bergerak maju saja sudah merupakan perjuangan tersendiri.
+
+Setelah acara pernikahan selesai, dalam perjalanan pulang saya kembali mencoba melacak posisi teman-teman Playon85.
+
+Di sini saya ingin mengapresiasi fasilitas runner tracking yang disediakan panitia UMITB tahun ini. Sangat membantu untuk memantau posisi pelari. Kita jadi bisa memperkirakan di mana akan bertemu mereka tanpa harus terus bertanya melalui grup.
+
+Satu hal lain yang juga sangat membantu adalah pengawal bermotor yang disewa teman-teman Playon85. Dengan tulisan PLAYON85 berukuran besar di belakang rompinya, pengawal tersebut sangat mudah dikenali dari mobil. Jadi ketika menyusuri lintasan, keberadaan pelari Playon85 lebih mudah ditemukan.
+
+Berkat itu, akhirnya saya bertemu Andi, pelari Leg 13 dari Tim R16. Saya sempat berhenti, menyapa, memberi semangat, sekaligus mengambil foto dan video.
+
+Sepertinya saya juga berpapasan dengan Basyrah, tetapi kondisi jalan saat itu tidak memungkinkan untuk berhenti.
+
+Jadi, walaupun sudah tidak sedang bertugas resmi sebagai TS, ternyata sepanjang perjalanan pulang masih saja mencari-cari kawan yang sedang berlari. Rupanya susah juga melepaskan diri dari urusan Playon85 kalau sudah berada di lintasannya!
+
+Sampai Di Sini Dulu
+
+Sebetulnya saya masih ingin bergabung dengan teman-teman di garis finish ITB pada Sabtu malam, menyambut para pelari yang berhasil menyelesaikan perjuangannya.
+
+Namun, setelah begadang semalaman, perjalanan Cibinong–Bandung, disambung pergi-pulang Cianjur, ternyata kondisi badan sudah tidak cukup baik. Akhirnya niat ke garis finish terpaksa dibatalkan. Begitu juga dengan acara hari Minggu, saya putuskan untuk absen dan beristirahat.
+
+Begitulah pengalaman menjadi Team Support Playon85 di UMITB 2026 kali ini.
+
+Awalnya sudah mendaftar, lalu membatalkan. Kemudian ternyata bisa ikut lagi, meskipun terbatas. Rencana pulang jam 02.00 mundur sampai subuh, tiba di rumah jam 08.00, dan siangnya malah kembali berpapasan dengan para pelari di Cianjur.
+
+Tidak sesuai rencana awal, tetapi justru banyak cerita.
+
+Bagi saya, menjadi Team Support bukan hanya urusan mengantar, menjemput, atau menunggu pelari di Water Station. Ada kesenangan tersendiri bisa bertemu teman-teman, memberi semangat, menyaksikan perjuangan mereka di lintasan, dan tetap menjadi bagian dari kebersamaan Playon85.
+
+Salut untuk semua pelari Playon85, baik yang menyelesaikan satu leg, dua leg, empat leg, yang terus berjuang sampai harus berjalan kaki. Juga untuk seluruh Team Support dan teman-teman yang sudah mengatur segala keperluan di sepanjang rute.
+
+Sampai ketemu lagi di UMITB berikutnya. Semoga masih bisa ikut support, dan mudah-mudahan jadwalnya tidak bentrok lagi!
+
+PLAYON85!`,
   },
   {
     name: "Mpie",
