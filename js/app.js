@@ -147,6 +147,11 @@ const supportTeam = [
     route: "Start → Finish",
     photo: "asrul.jpg",
     message: "",
+    albumPhotos: [
+      { src: "album/sini-ngopi.jpg", href: "https://photos.google.com/share/AF1QipMrbWnA-2rNb946OTYhvqC97MzYFHCpqN8AE-5Za4WM5RB3uDpt90uer45ys8_08w/photo/AF1QipNNw93VX9aUNV2XgG2jpVcm4oRj1fkmIbWggvG5?key=by11SEhXLWQ5aEgzaXFYdTRGb0FQQ2RIMlhncFdB", label: "Left, with glasses" },
+      { src: "album/three-people.jpg", href: "https://photos.google.com/share/AF1QipMrbWnA-2rNb946OTYhvqC97MzYFHCpqN8AE-5Za4WM5RB3uDpt90uer45ys8_08w/photo/AF1QipMW7L6iZjqKhGZsoVtPsX8YfPJRmxe2O6pOfZP1?key=by11SEhXLWQ5aEgzaXFYdTRGb0FQQ2RIMlhncFdB", label: "Left" },
+      { src: "album/red-chairs.jpg", href: "https://photos.google.com/share/AF1QipMrbWnA-2rNb946OTYhvqC97MzYFHCpqN8AE-5Za4WM5RB3uDpt90uer45ys8_08w/photo/AF1QipOj8jy6ATHUSdM59pijRSq9vTiPfwwFHXtRlHFN?key=by11SEhXLWQ5aEgzaXFYdTRGb0FQQ2RIMlhncFdB", label: "Standing at the back" },
+    ],
   },
   {
     name: "Mira Amrita",
@@ -250,6 +255,10 @@ Tetap semangat..🔥
     photo: "hariyono.jpg",
     message: `Kalau 85 kan Listen to your Heart ya, Paketu😀
 (Sambil lari sambil dengerin Roxette)`,
+    albumPhotos: [
+      { src: "album/sini-ngopi.jpg", href: "https://photos.google.com/share/AF1QipMrbWnA-2rNb946OTYhvqC97MzYFHCpqN8AE-5Za4WM5RB3uDpt90uer45ys8_08w/photo/AF1QipNNw93VX9aUNV2XgG2jpVcm4oRj1fkmIbWggvG5?key=by11SEhXLWQ5aEgzaXFYdTRGb0FQQ2RIMlhncFdB", label: "Right, purple jacket" },
+      { src: "album/gerbang-palem.jpg", href: "https://photos.google.com/share/AF1QipMrbWnA-2rNb946OTYhvqC97MzYFHCpqN8AE-5Za4WM5RB3uDpt90uer45ys8_08w/photo/AF1QipPxpQZvUZQKpFiEyB-TXYRDyXhLKkKwhDFd7s9t?key=by11SEhXLWQ5aEgzaXFYdTRGb0FQQ2RIMlhncFdB", label: "Far left, blue shirt" },
+    ],
   },
   {
     name: "Syah Inderaprana",
@@ -430,6 +439,7 @@ function openSupport(person) {
   setOptionalText(dialogTime, person.route || "");
   setOptionalText(dialogLeg, person.role || "");
   dialogReflection.replaceChildren();
+  renderAlbumPhotos(dialogReflection, person);
   renderReflection(dialogReflection, person.message);
   if (!dialog.open) dialog.showModal();
   document.querySelector(".reflection-scroll").scrollTop = 0;
@@ -615,6 +625,7 @@ function fillDialog(runner) {
   setOptionalText(dialogLeg, runner.leg || "");
   setStravaLink(dialogStrava, runner.strava);
   dialogReflection.replaceChildren();
+  renderAlbumPhotos(dialogReflection, runner);
   renderReflection(dialogReflection, runner.reflection);
 
   for (const extra of extraReflections(runner)) {
@@ -732,6 +743,61 @@ function initials(name) {
     .join("")
     .toUpperCase();
   return mark;
+}
+
+function renderAlbumPhotos(container, person) {
+  const photos = confirmedAlbumPhotos(person);
+  if (!photos.length) return;
+  const group = document.createElement("div");
+  group.className = "album-photos";
+  for (const photo of photos) {
+    const link = document.createElement("a");
+    link.className = "album-photo";
+    link.href = photo.href;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    const image = document.createElement("img");
+    image.src = photo.src;
+    image.alt = photo.label ? `${person.name}, ${photo.label}` : person.name;
+    image.width = 240;
+    image.height = 160;
+    const caption = document.createElement("span");
+    caption.textContent = photo.label;
+    link.append(image, caption);
+    group.append(link);
+  }
+  container.append(group);
+}
+
+function confirmedAlbumPhotos(person) {
+  if (!Array.isArray(person.albumPhotos)) return [];
+  return person.albumPhotos.flatMap((item) => {
+    if (!item) return [];
+    const href = albumHref(item.href);
+    const src = albumThumb(item.src);
+    const label = typeof item.label === "string" ? item.label.trim() : "";
+    if (!href || !src || !label) return [];
+    return [{ href, src, label }];
+  });
+}
+
+function albumHref(value) {
+  if (typeof value !== "string" || !value.trim()) return "";
+  try {
+    const url = new URL(value.trim());
+    if (url.protocol !== "https:") return "";
+    if (url.hostname !== "photos.google.com") return "";
+    if (!url.pathname.startsWith("/share/")) return "";
+    return url.href;
+  } catch {
+    return "";
+  }
+}
+
+function albumThumb(value) {
+  if (typeof value !== "string") return "";
+  if (!/^album\/[a-z0-9-]+\.jpg$/.test(value)) return "";
+  return `assets/photos/${value}`;
 }
 
 function photoSrc(photo) {

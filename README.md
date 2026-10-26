@@ -38,7 +38,7 @@ The page uses `data/runners.local.json` when that file is present, and otherwise
 - Each runner card shows the leg, the leg time, and a link to that runner's Strava profile. Athmam's card also has a Captain chip.
 - The card shows a short reflection title. Open it to read the full note. Notes pasted from WhatsApp keep their bold headings and paragraph breaks. Sjukron's title is Pengalaman Ultra Marathon ITB 2026.
 - Hendi's leg is 1:47:32 and Arief H's is 1:54:20. CP11 was not recorded, so those two times share the official gap from Luluk's finish to Arief H's finish, split by leg distance.
-- Open a reflection to read it full screen. The text scrolls, and Close returns to the cards.
+- Open a reflection to read it full screen. The text scrolls, and Close returns to the cards. Tuti, Triyani, Asrul, and Hariyono also show their album photos there. Each thumbnail opens that photo in the team album. The round portrait on the card stays as it is.
 - On a phone, scroll down and an arrow at the bottom right returns to the top.
 - Krishna and Hariyono sit side by side above the roster. Hariyono's title is chief of the mission, taken from Krishna's message. Krishna is also listed with Team Support.
 - Team Support is its own group. Each card shows the role and the stretch they covered. Asrul and Hariyono have photos. Wicak rode a motorcycle from start to finish.
