@@ -45,6 +45,7 @@ The page uses `data/runners.local.json` when that file is present, and otherwise
 - The moon and sun button switches light and dark. The page opens in dark mode. A choice is saved in this browser.
 - The browser tab shows a bold 85. Sharing the page link shows the full PlayOn 85 logo.
 - Photo collection opens the team album: https://photos.google.com/share/AF1QipMrbWnA-2rNb946OTYhvqC97MzYFHCpqN8AE-5Za4WM5RB3uDpt90uer45ys8_08w?key=by11SEhXLWQ5aEgzaXFYdTRGb0FQQ2RIMlhncFdB
+- The footer links to Race result R4, Race result R8, and Race result R16. The credit is © Prima - 2026 and opens https://primayuda.dev/
 
 ## Preview
 

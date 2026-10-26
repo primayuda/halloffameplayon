@@ -44,7 +44,8 @@ body {
 }
 
 .hero,
-main {
+main,
+.site-footer {
   width: min(960px, calc(100% - 2rem));
   margin-inline: auto;
 }
@@ -489,6 +490,48 @@ html[data-theme="light"] .icon-moon {
   margin-top: 0.9rem;
 }
 
+.site-footer {
+  margin-bottom: max(5rem, calc(env(safe-area-inset-bottom) + 4.5rem));
+  padding: 1.15rem 1rem 1.25rem;
+  border-radius: 1.25rem;
+  background: var(--card);
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.race-results {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.65rem;
+}
+
+.race-results a,
+.credit a {
+  color: var(--accent-purple);
+  font-weight: 650;
+}
+
+.race-results a {
+  border-radius: 999px;
+  padding: 0.5rem 0.95rem;
+  background: var(--chip);
+  text-decoration: none;
+}
+
+.race-results a:hover,
+.race-results a:focus-visible,
+.credit a:hover,
+.credit a:focus-visible {
+  outline: 2px solid var(--accent-purple);
+  outline-offset: 2px;
+}
+
+.credit {
+  margin: 0.95rem 0 0;
+  font-size: 0.95rem;
+}
+
 .to-top {
   position: fixed;
   right: 1rem;
@@ -523,6 +566,10 @@ html[data-theme="light"] .icon-moon {
 @media (min-width: 720px) {
   .ketua {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .site-footer {
+    margin-bottom: 2rem;
   }
 
   .to-top {
